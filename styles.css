@@ -1,0 +1,494 @@
+/* Base Styles - A Perfect Circle Inspired */
+:root {
+    --bg-color: #050505;
+    --bg-color-alt: #0a0a0a;
+    --text-color: #f0f0f0;
+    --text-color-muted: rgba(240, 240, 240, 0.6);
+    --accent-glow: rgba(0, 180, 216, 0.8); /* Cyan/Blue Glow */
+    --accent-color: #00b4d8;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --overlay-color: rgba(0, 0, 0, 0.5);
+    --form-bg: rgba(255, 255, 255, 0.05);
+    --form-bg-focus: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    overflow-x: hidden;
+    letter-spacing: 0.02em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    filter: grayscale(20%) contrast(110%);
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:hover {
+    color: var(--accent-color);
+    text-shadow: 0 0 8px var(--accent-glow);
+}
+
+.container {
+    width: 85%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 0;
+}
+
+/* Typography Overhaul */
+h1, h2, h3, h4 {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 60px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    background-color: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 14px 35px;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(5px);
+}
+
+.btn:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
+    background-color: rgba(0, 180, 216, 0.05);
+}
+
+/* Header & Nav */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 50px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(5, 5, 5, 0.9), transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo img {
+    height: 35px;
+    filter: brightness(1.2);
+}
+
+.topnav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.topnav ul li a {
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0.7;
+}
+
+.topnav ul li a:hover {
+    opacity: 1;
+}
+
+/* Hero Section - Immersive */
+.hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
+    transform: scale(1.05);
+    filter: brightness(0.8) contrast(1.2) saturate(0.8);
+}
+
+.hero-overlay {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 8vw, 4rem);
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.tagline {
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+/* Lyrics Modal */
+.lyrics-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    overflow-y: auto;
+    padding: 100px 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+.modal-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.close-modal {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    font-size: 2rem;
+    color: var(--text-color-muted);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2100;
+}
+
+.close-modal:hover {
+    color: var(--accent-color);
+    transform: rotate(90deg);
+}
+
+.modal-track-title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.modal-lyrics-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-lyrics-toggle .lang-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.7rem;
+    padding: 15px 30px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-lyrics-toggle .lang-btn:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.modal-lyrics-toggle .lang-btn.active {
+    color: var(--text-color);
+    border-bottom-color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.modal-lyrics-body {
+    font-weight: 200;
+    line-height: 2.2;
+    text-align: center;
+    color: var(--text-color);
+    white-space: pre-line;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+}
+
+/* Remove old lyrics layout styles */
+.lyrics-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.track-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.track-card:hover {
+    border-color: var(--accent-color);
+    background: rgba(0, 180, 216, 0.05);
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: translateY(-5px);
+}
+
+.track-card h3 {
+    margin-bottom: 0;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+}
+
+/* Hide original lyrics display */
+.lyrics-nav, .lyrics-content { display: none; }
+
+/* Discografia / Spotify */
+.discografia {
+    background-color: var(--bg-color-alt);
+    padding: 100px 0;
+}
+
+.spotify-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* Instagram Section */
+.instagram {
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+}
+
+/* Contact Form Refinements */
+.contact-form .form-control {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0;
+    color: var(--text-color);
+    padding: 18px 25px;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    font-weight: 300;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+}
+
+.contact-form .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 180, 216, 0.15);
+    outline: none;
+}
+
+.contact-form .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.3em;
+}
+
+#contatos .btn {
+    margin-top: 20px;
+    min-width: 250px;
+    font-weight: 500;
+}
+
+/* Footer */
+footer {
+    padding: 60px 0;
+    border-top: 1px solid var(--border-color);
+    background-color: #000;
+}
+
+.footer-logo {
+    opacity: 0.5;
+    margin-bottom: 30px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animations */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 992px) {
+    header {
+        padding: 15px 25px;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 25px;
+        height: 1px;
+        background-color: var(--text-color);
+        margin: 6px 0;
+        transition: 0.3s;
+    }
+
+    .topnav ul {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        width: 70%;
+        height: 100vh;
+        background-color: #000;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border-left: 1px solid var(--border-color);
+        z-index: 999;
+    }
+
+    .topnav ul.active {
+        right: 0;
+    }
+
+    .menu-toggle.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 5px); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -5px); }
+
+    .lyrics-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .lyrics-nav {
+        flex: none;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .lyrics-nav ul {
+        display: flex;
+        gap: 20px;
+        white-space: nowrap;
+    }
+
+    .lyrics-nav li {
+        margin-bottom: 0;
+    }
+
+    .track-link {
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        padding: 0 0 10px 0;
+    }
+
+    .track-link.active {
+        border-bottom-color: var(--accent-color);
+    }
+
+    .spotify-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 90%;
+        padding: 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .tagline {
+        font-size: 0.7rem;
+        letter-spacing: 0.3em;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .d-flex.gap-3 {
+        flex-direction: column;
+    }
+}
