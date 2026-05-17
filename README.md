@@ -89,11 +89,4 @@ Or use VS Code Live Server for hot reload.
 
 ---
 
-## 📝 Notes
-
-- PDFs for tracks 2 (Second Dawn) and 3 (Radical Affliction) are currently empty — lyrics exist on the live site only
-- Images referenced in the HTML are hosted on Netlify CDN (`ugoboi.netlify.app/alta/` and `/lux/`)
-
----
-
 *Built with 🎸 for Lux Sundari — all rights reserved © 2026*
